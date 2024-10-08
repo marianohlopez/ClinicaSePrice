@@ -38,7 +38,7 @@ namespace ClinicaSePrice.Forms
             {
                 Home home = new Home(newUser.Username?? "", newUser.UserRole?? "");
                 home.Show();
-                this.Close();
+                this.Hide();
             }
             else
             {
