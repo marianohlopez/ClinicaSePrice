@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnLogin = new Button();
             txtUser = new TextBox();
-            textBox1 = new TextBox();
+            txtPass = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // btnLogin
             // 
-            button1.BackColor = Color.FromArgb(100, 181, 246);
-            button1.Location = new Point(338, 271);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 36);
-            button1.TabIndex = 0;
-            button1.Text = "ACEPTAR";
-            button1.UseVisualStyleBackColor = false;
+            btnLogin.BackColor = Color.FromArgb(100, 181, 246);
+            btnLogin.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.Location = new Point(338, 271);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(130, 36);
+            btnLogin.TabIndex = 0;
+            btnLogin.Text = "ACEPTAR";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // txtUser
             // 
@@ -55,14 +57,15 @@
             txtUser.Size = new Size(424, 30);
             txtUser.TabIndex = 1;
             // 
-            // textBox1
+            // txtPass
             // 
-            textBox1.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
-            textBox1.Location = new Point(192, 192);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(424, 30);
-            textBox1.TabIndex = 2;
+            txtPass.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+            txtPass.Location = new Point(192, 192);
+            txtPass.Multiline = true;
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(424, 30);
+            txtPass.TabIndex = 2;
+            txtPass.Enter += txtPass_Enter;
             // 
             // label1
             // 
@@ -103,9 +106,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(txtPass);
             Controls.Add(txtUser);
-            Controls.Add(button1);
+            Controls.Add(btnLogin);
             Name = "Login";
             Text = "Login";
             ResumeLayout(false);
@@ -114,9 +117,9 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnLogin;
         private TextBox txtUser;
-        private TextBox textBox1;
+        private TextBox txtPass;
         private Label label1;
         private Label label2;
         private Label label3;

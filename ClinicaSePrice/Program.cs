@@ -1,3 +1,5 @@
+using ClinicaSePrice.Forms;
+
 namespace ClinicaSePrice
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace ClinicaSePrice
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Home());
+            Application.Run(new Login());
         }
     }
 }

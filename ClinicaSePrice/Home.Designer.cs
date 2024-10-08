@@ -28,18 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblRole = new Label();
+            lblUserName = new Label();
             SuspendLayout();
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.Location = new Point(251, 84);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(38, 15);
+            lblRole.TabIndex = 0;
+            lblRole.Text = "label1";
+            // 
+            // lblUserName
+            // 
+            lblUserName.AutoSize = true;
+            lblUserName.Location = new Point(251, 147);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(38, 15);
+            lblUserName.TabIndex = 1;
+            lblUserName.Text = "label1";
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblUserName);
+            Controls.Add(lblRole);
             Name = "Home";
             Text = "Home";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblRole;
+        private Label lblUserName;
     }
 }

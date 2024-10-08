@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Classes\" />
     <Folder Include="Assets\" />
     <Folder Include="Sql\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
