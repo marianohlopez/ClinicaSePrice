@@ -90,10 +90,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 15.75F);
             label3.Location = new Point(346, 28);
             label3.Name = "label3";
-            label3.Size = new Size(122, 25);
+            label3.Size = new Size(138, 25);
             label3.TabIndex = 5;
             label3.Text = "Iniciar sesión";
             // 

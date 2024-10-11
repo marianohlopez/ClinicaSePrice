@@ -70,6 +70,7 @@
             btnMkAppoint.TabIndex = 2;
             btnMkAppoint.Text = "Agendar turno";
             btnMkAppoint.UseVisualStyleBackColor = false;
+            btnMkAppoint.Click += btnMkAppoint_Click;
             // 
             // btnClAppoint
             // 
@@ -146,6 +147,7 @@
             btnClose.TabIndex = 9;
             btnClose.Text = "Salir";
             btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // Home
             // 
@@ -165,6 +167,7 @@
             Controls.Add(lblRole);
             Name = "Home";
             Text = "Home";
+            FormClosing += Home_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }
