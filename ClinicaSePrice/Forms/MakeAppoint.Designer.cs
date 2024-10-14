@@ -39,7 +39,7 @@
             // 
             lblMakeAppoint.AutoSize = true;
             lblMakeAppoint.Font = new Font("Microsoft Sans Serif", 15.75F);
-            lblMakeAppoint.Location = new Point(341, 34);
+            lblMakeAppoint.Location = new Point(341, 31);
             lblMakeAppoint.Name = "lblMakeAppoint";
             lblMakeAppoint.Size = new Size(148, 25);
             lblMakeAppoint.TabIndex = 7;
@@ -49,18 +49,19 @@
             // 
             btnSetAppoint.BackColor = Color.FromArgb(100, 181, 246);
             btnSetAppoint.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSetAppoint.Location = new Point(341, 256);
+            btnSetAppoint.Location = new Point(350, 255);
             btnSetAppoint.Name = "btnSetAppoint";
             btnSetAppoint.Size = new Size(130, 36);
             btnSetAppoint.TabIndex = 8;
             btnSetAppoint.Text = "ACEPTAR";
             btnSetAppoint.UseVisualStyleBackColor = false;
+            btnSetAppoint.Click += btnSetAppoint_Click;
             // 
             // cboSpecialty
             // 
             cboSpecialty.FormattingEnabled = true;
             cboSpecialty.Items.AddRange(new object[] { "Cardiología", "Dermatología", "Neurología" });
-            cboSpecialty.Location = new Point(130, 124);
+            cboSpecialty.Location = new Point(66, 142);
             cboSpecialty.Name = "cboSpecialty";
             cboSpecialty.Size = new Size(205, 23);
             cboSpecialty.TabIndex = 9;
@@ -70,16 +71,17 @@
             // 
             cboShifts.FormattingEnabled = true;
             cboShifts.Items.AddRange(new object[] { "Cardiología", "\t", "Dermatología\t", "Neurología" });
-            cboShifts.Location = new Point(483, 198);
+            cboShifts.Location = new Point(562, 142);
             cboShifts.Name = "cboShifts";
             cboShifts.Size = new Size(205, 23);
             cboShifts.TabIndex = 10;
             // 
             // dtpAbleDays
             // 
-            dtpAbleDays.Location = new Point(483, 105);
+            dtpAbleDays.Location = new Point(300, 142);
             dtpAbleDays.Name = "dtpAbleDays";
-            dtpAbleDays.Size = new Size(200, 23);
+            dtpAbleDays.ShowCheckBox = true;
+            dtpAbleDays.Size = new Size(233, 23);
             dtpAbleDays.TabIndex = 11;
             // 
             // MakeAppoint

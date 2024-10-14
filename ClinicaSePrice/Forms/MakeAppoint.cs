@@ -39,18 +39,17 @@ namespace ClinicaSePrice.Forms
             }
         }
 
+        // Obtener los horarios desde la base de datos
         private void LoadAvailableSchedules(string selectedDay)
         {
-            string selectedSpecialty = cboSpecialty.SelectedItem?.ToString();
+            string selectedSpecialty = cboSpecialty.SelectedItem?.ToString() ?? "No disponible";
             if (string.IsNullOrEmpty(selectedSpecialty)) return;
 
-            // Obtener los horarios desde la base de datos
+
             List<(TimeSpan StartTime, TimeSpan EndTime)> horarios = MakeAppointment.GetSchedulesFromDatabase(selectedSpecialty, selectedDay);
 
-            // Limpiar el combobox antes de agregar los nuevos horarios
             cboShifts.Items.Clear();
 
-            // Generar los horarios disponibles en intervalos de 30 minutos
             foreach (var horario in horarios)
             {
                 List<string> availableSchedules = MakeAppointment.MakeSchedule(horario.StartTime, horario.EndTime);
@@ -62,7 +61,7 @@ namespace ClinicaSePrice.Forms
         }
 
         // Evento ValueChanged para validar los días disponibles
-        private void dtpDays_ValueChanged(object sender, EventArgs e)
+        private void dtpDays_ValueChanged(object? sender, EventArgs e)
         {
             if (currentAvailableDays == null || currentAvailableDays.Count == 0)
                 return;
@@ -72,13 +71,43 @@ namespace ClinicaSePrice.Forms
             // Validar que el día seleccionado sea uno de los disponibles
             if (!currentAvailableDays.Contains(diaEnEspanol))
             {
-                // Mostrar un mensaje con los días disponibles
                 MessageBox.Show($"Este día no está disponible para la especialidad seleccionada." +
                     $" Días disponibles: {string.Join(", ", currentAvailableDays)}");
                 return;
             }
-            // Obtener los horarios disponibles para el día y la especialidad seleccionados
             LoadAvailableSchedules(diaEnEspanol);
+        }
+
+        private void btnSetAppoint_Click(object sender, EventArgs e)
+        {
+            // Validar que la especialidad esté seleccionada
+            if (string.IsNullOrEmpty(cboSpecialty.SelectedItem?.ToString()))
+            {
+                MessageBox.Show("Por favor, seleccione una especialidad.", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que una fecha haya sido seleccionada
+            if (!dtpAbleDays.Checked)
+            {
+                MessageBox.Show("Por favor, seleccione una fecha.", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que un horario esté seleccionado
+            if (string.IsNullOrEmpty(cboShifts.SelectedItem?.ToString()))
+            {
+                MessageBox.Show("Por favor, seleccione un horario.", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string selectedSpecialty = cboSpecialty.SelectedItem.ToString() ?? "";
+            DateTime selectedDate = dtpAbleDays.Value;
+            string selectedSchedule = cboShifts.SelectedItem.ToString() ?? "";
+
+            AppointConfirm appointConfirm = new AppointConfirm(selectedSpecialty, selectedDate, selectedSchedule);
+            appointConfirm.ShowDialog();
+            this.Close();
         }
     }
 }

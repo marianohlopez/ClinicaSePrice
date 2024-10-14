@@ -16,6 +16,7 @@ namespace ClinicaSePrice.Forms
         public Login()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         private void txtPass_Enter(object sender, EventArgs e)

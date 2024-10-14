@@ -13,7 +13,7 @@ namespace ClinicaSePrice.Classes
     internal class MakeAppointment
     {
 
-        // Método para obtener los horarios desde la base de datos según especialidad elegida
+        // Método para obtener los dias en que la especialidad opera desde la base de datos
         public static List<string> GetDataTimeFromDatabase(string selectedSpecialty)
         {
             List<string> availableDays = new List<string>();
@@ -37,7 +37,7 @@ namespace ClinicaSePrice.Classes
 
                 while (reader.Read())
                 {
-                    availableDays.Add(reader["Dia_Semana"].ToString());
+                    availableDays.Add(reader["Dia_Semana"].ToString() ?? "No disponible");
                 }
             }
             catch (Exception ex)
@@ -67,6 +67,7 @@ namespace ClinicaSePrice.Classes
             }
         }
 
+        // Obtiene horarios segun dias y especialidad, luego retorna una lista de tuplas con las horas de inicio y fin
         public static List<(TimeSpan StartTime, TimeSpan EndTime)> GetSchedulesFromDatabase(string selectedSpecialty, string selectedDay)
         {
             MySqlConnection conn = Connection.GetInstance().CreateConnection();
@@ -102,9 +103,10 @@ namespace ClinicaSePrice.Classes
                 conn.Close();
             }
 
-            return horarios; // Retorna una lista de tuplas con las horas de inicio y fin
+            return horarios; 
         }
 
+        // Filtrar los horarios que ya están reservados
         public static List<string> FilterReservedSchedules(List<string> availableSchedules, DateTime selectedDate, string selectedSpecialty)
         {
             MySqlConnection conn = Connection.GetInstance().CreateConnection();
@@ -141,10 +143,10 @@ namespace ClinicaSePrice.Classes
                 conn.Close();
             }
 
-            // Filtrar los horarios que ya están reservados
             return availableSchedules.Where(schedule => !reservedSchedules.Contains(schedule)).ToList();
         }
 
+        // Generar los horarios disponibles en intervalos de 30 minutos
         public static List<string> MakeSchedule(TimeSpan startTime, TimeSpan endTime)
         {
             List<string> schedules = new List<string>();
