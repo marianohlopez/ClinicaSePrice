@@ -17,12 +17,10 @@ namespace ClinicaSePrice.Forms
         {
             InitializeComponent();
             this.AcceptButton = btnLogin;
-        }
-
-        private void txtPass_Enter(object sender, EventArgs e)
-        {
             txtPass.UseSystemPasswordChar = true;
         }
+
+        
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

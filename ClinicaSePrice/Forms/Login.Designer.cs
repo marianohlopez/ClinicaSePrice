@@ -61,11 +61,10 @@
             // 
             txtPass.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
             txtPass.Location = new Point(192, 192);
-            txtPass.Multiline = true;
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(424, 30);
             txtPass.TabIndex = 2;
-            txtPass.Enter += txtPass_Enter;
+            txtPass.UseSystemPasswordChar = true;
             // 
             // label1
             // 

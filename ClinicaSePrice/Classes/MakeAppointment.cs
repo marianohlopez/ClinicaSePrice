@@ -52,6 +52,8 @@ namespace ClinicaSePrice.Classes
             return availableDays;
         }
 
+        // Traduce los dias a español
+
         public static string GetDayInSpanish(DayOfWeek day)
         {
             switch (day)
@@ -106,7 +108,7 @@ namespace ClinicaSePrice.Classes
             return horarios; 
         }
 
-        // Filtrar los horarios que ya están reservados
+        // Filtra los horarios que ya están reservados
         public static List<string> FilterReservedSchedules(List<string> availableSchedules, DateTime selectedDate, string selectedSpecialty)
         {
             MySqlConnection conn = Connection.GetInstance().CreateConnection();
@@ -146,7 +148,7 @@ namespace ClinicaSePrice.Classes
             return availableSchedules.Where(schedule => !reservedSchedules.Contains(schedule)).ToList();
         }
 
-        // Generar los horarios disponibles en intervalos de 30 minutos
+        // Genera los horarios disponibles en intervalos de 30 minutos
         public static List<string> MakeSchedule(TimeSpan startTime, TimeSpan endTime)
         {
             List<string> schedules = new List<string>();
@@ -158,6 +160,38 @@ namespace ClinicaSePrice.Classes
             }
             return schedules;
         }
+
+        // Registra el turno en la base de datos
+
+        public static void RegisterAppointment(int idPaciente, int idMedico, DateTime selectedDate, string selectedSchedule)
+        {
+            MySqlConnection conn = Connection.GetInstance().CreateConnection();
+            string query = @"INSERT INTO Turnos_Reservados (ID_Medico, Fecha_Turno, Hora_Turno, ID_Paciente) 
+                     VALUES (@idMedico, @fechaTurno, @horaTurno, @idPaciente)";
+
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(query, conn);
+
+                command.Parameters.AddWithValue("@idMedico", idMedico);
+                command.Parameters.AddWithValue("@fechaTurno", selectedDate.ToString("yyyy-MM-dd"));
+                command.Parameters.AddWithValue("@horaTurno", TimeSpan.Parse(selectedSchedule.Split('-')[0])); // Extraer la hora de inicio del rango
+                command.Parameters.AddWithValue("@idPaciente", idPaciente);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al registrar el turno: {ex.Message}");
+                MessageBox.Show("Ocurrió un error al intentar registrar el turno. Inténtelo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 
 }

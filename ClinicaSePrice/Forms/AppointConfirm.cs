@@ -13,9 +13,22 @@ namespace ClinicaSePrice.Forms
 {
     public partial class AppointConfirm : Form
     {
-        public AppointConfirm(string specialty, DateTime date, string schedule)
+        private Doctor newDoctor;
+
+        private DateTime selectedDate;
+
+        private string selectedSchedule;
+        public AppointConfirm(string specialty, DateTime date, string schedule, Doctor doctor)
         {
             InitializeComponent();
+
+            this.AcceptButton = btnSearchDni;
+
+            newDoctor = doctor;
+
+            selectedDate = date;
+
+            selectedSchedule = schedule;
 
             lblEspecialty.Text = specialty;
             lblDateAppoint.Text = $"{date.ToString("dd/MM/yyyy")}";
@@ -39,9 +52,12 @@ namespace ClinicaSePrice.Forms
             }
             else
             {
-                // Aquí puedes usar el objeto paciente para acceder a sus propiedades, por ejemplo:
-                //RegistrarTurno(paciente.Id);
+                // Registrar turno
+                MakeAppointment.RegisterAppointment(patient.Id, newDoctor.Id, selectedDate, selectedSchedule);
+
                 MessageBox.Show($"Turno registrado para el paciente: {patient.Name} {patient.LastName}", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Close();
             }
         }
     }

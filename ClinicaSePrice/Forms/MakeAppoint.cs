@@ -17,9 +17,12 @@ namespace ClinicaSePrice.Forms
         public MakeAppoint()
         {
             InitializeComponent();
+            this.AcceptButton = btnSetAppoint;
         }
 
         private List<string> currentAvailableDays = new List<string>();
+
+        // Capturar el cambio de item en el combobox y obtener los días disponibles de la especialidad
         private void cboSpecialty_SelectedIndexChanged(object sender, EventArgs e)
         {
             string? selectedSpecialty = cboSpecialty.SelectedItem?.ToString();
@@ -36,6 +39,28 @@ namespace ClinicaSePrice.Forms
                 dtpAbleDays.ValueChanged += dtpDays_ValueChanged;
 
                 cboShifts.Items.Clear();
+            }
+        }
+
+        private void cboSpont_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string? selectedSpecialty = cboSpont.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedSpecialty))
+            {
+                Doctor? doctor = Doctor.GetSpontaneusDoctor(selectedSpecialty);
+
+                if (doctor == null)
+                {
+                    MessageBox.Show("No se encontró un doctor para la especialidad seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DateTime selectedDate = DateTime.Now.Date;
+                string selectedSchedule = DateTime.Now.ToString("HH:mm");
+
+                AppointConfirm appointConfirm = new AppointConfirm(selectedSpecialty, selectedDate, selectedSchedule, doctor);
+                appointConfirm.ShowDialog();
+                this.Close();
             }
         }
 
@@ -105,7 +130,15 @@ namespace ClinicaSePrice.Forms
             DateTime selectedDate = dtpAbleDays.Value;
             string selectedSchedule = cboShifts.SelectedItem.ToString() ?? "";
 
-            AppointConfirm appointConfirm = new AppointConfirm(selectedSpecialty, selectedDate, selectedSchedule);
+            Doctor? doctor = Doctor.GetDoctor(selectedSpecialty, selectedDate, selectedSchedule);
+
+            if (doctor == null)
+            {
+                MessageBox.Show("No se encontró un doctor para la especialidad seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            AppointConfirm appointConfirm = new AppointConfirm(selectedSpecialty, selectedDate, selectedSchedule, doctor);
             appointConfirm.ShowDialog();
             this.Close();
         }

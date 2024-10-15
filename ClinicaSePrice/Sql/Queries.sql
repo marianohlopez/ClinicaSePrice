@@ -75,13 +75,21 @@ INSERT INTO Especialidades (Especialidad)
 VALUES 
   ('Cardiología'),
   ('Dermatología'),
-  ('Neurología');
+  ('Neurología'),
+  ('Radiografía'),
+  ('Tomografía'),
+  ('Laboratorio'),
+  ('Resonancia');
 
 INSERT INTO Medicos (Nombre, Apellido, ID_Especialidad)
 VALUES 
   ('Juan', 'Pérez', 1),
   ('María', 'López', 2),
-  ('Pedro', 'Gómez', 3);
+  ('Pedro', 'Gómez', 3),
+  ('Radiografía', 'Especialista', 4),
+  ('Tomografía', 'Especialista', 5),
+  ('Laboratorio', 'Especialista', 6),
+  ('Resonancia', 'Especialista', 7);
 
 INSERT INTO Pacientes (Nombre, Apellido, DNI, Telefono)
 VALUES 
