@@ -20,6 +20,18 @@ namespace ClinicaSePrice
             makeAppoint.ShowDialog();
         }
 
+        private void btnClAppoint_Click(object sender, EventArgs e)
+        {
+            CancelAppoint cancelAppoint = new CancelAppoint();
+            cancelAppoint.ShowDialog();
+        }
+
+        private void btnRfAppoint_Click(object sender, EventArgs e)
+        {
+            RatifyAppoint ratifyAppoint = new RatifyAppoint();
+            ratifyAppoint.ShowDialog();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

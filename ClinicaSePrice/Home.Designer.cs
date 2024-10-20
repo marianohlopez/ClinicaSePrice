@@ -35,7 +35,7 @@
             btnRegAppoint = new Button();
             btnDelivAppoint = new Button();
             lblWelcome = new Label();
-            btnAcrAppoint = new Button();
+            btnRfAppoint = new Button();
             btnMngSuppl = new Button();
             btnClose = new Button();
             SuspendLayout();
@@ -82,6 +82,7 @@
             btnClAppoint.TabIndex = 3;
             btnClAppoint.Text = "Cancelar turno";
             btnClAppoint.UseVisualStyleBackColor = false;
+            btnClAppoint.Click += btnClAppoint_Click;
             // 
             // btnRegAppoint
             // 
@@ -115,16 +116,17 @@
             lblWelcome.TabIndex = 6;
             lblWelcome.Text = "Bienvenido";
             // 
-            // btnAcrAppoint
+            // btnRfAppoint
             // 
-            btnAcrAppoint.BackColor = Color.FromArgb(100, 181, 246);
-            btnAcrAppoint.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
-            btnAcrAppoint.Location = new Point(546, 134);
-            btnAcrAppoint.Name = "btnAcrAppoint";
-            btnAcrAppoint.Size = new Size(230, 69);
-            btnAcrAppoint.TabIndex = 7;
-            btnAcrAppoint.Text = "Acreditar turno";
-            btnAcrAppoint.UseVisualStyleBackColor = false;
+            btnRfAppoint.BackColor = Color.FromArgb(100, 181, 246);
+            btnRfAppoint.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
+            btnRfAppoint.Location = new Point(546, 134);
+            btnRfAppoint.Name = "btnRfAppoint";
+            btnRfAppoint.Size = new Size(230, 69);
+            btnRfAppoint.TabIndex = 7;
+            btnRfAppoint.Text = "Acreditar turno";
+            btnRfAppoint.UseVisualStyleBackColor = false;
+            btnRfAppoint.Click += btnRfAppoint_Click;
             // 
             // btnMngSuppl
             // 
@@ -157,7 +159,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnClose);
             Controls.Add(btnMngSuppl);
-            Controls.Add(btnAcrAppoint);
+            Controls.Add(btnRfAppoint);
             Controls.Add(lblWelcome);
             Controls.Add(btnDelivAppoint);
             Controls.Add(btnRegAppoint);
@@ -181,7 +183,7 @@
         private Button btnRegAppoint;
         private Button btnDelivAppoint;
         private Label lblWelcome;
-        private Button btnAcrAppoint;
+        private Button btnRfAppoint;
         private Button btnMngSuppl;
         private Button btnClose;
     }
