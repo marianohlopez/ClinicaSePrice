@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Turnos_Reservados (
   ID_Paciente INT,
   FOREIGN KEY (ID_Medico) REFERENCES Medicos(ID),
   FOREIGN KEY (ID_Paciente) REFERENCES Pacientes(ID),
-  Acreditado BOOLEAN	
+  Acreditado BOOLEAN DEFAULT 0	
 	
 );
 
