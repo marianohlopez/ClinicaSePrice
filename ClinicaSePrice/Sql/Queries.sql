@@ -4,8 +4,14 @@ CREATE DATABASE IF NOT EXISTS CLinicaSePrice;
 
 USE CLinicaSePrice;
 
+SET FOREIGN_KEY_CHECKS = 0;
 #--	Executes drop sentences
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS Especialidades;
+DROP TABLE IF EXISTS Medicos;
+DROP TABLE IF EXISTS Pacientes;
+DROP TABLE IF EXISTS Horarios_Turnos;
+DROP TABLE IF EXISTS Turnos_Reservados;
 DROP PROCEDURE IF EXISTS Login;
 #-------------------------------------------------
 
@@ -63,8 +69,7 @@ CREATE TABLE IF NOT EXISTS Turnos_Reservados (
   ID_Paciente INT,
   FOREIGN KEY (ID_Medico) REFERENCES Medicos(ID),
   FOREIGN KEY (ID_Paciente) REFERENCES Pacientes(ID),
-  Acreditado BOOLEAN DEFAULT 0	
-	
+  Acreditado BOOLEAN DEFAULT 0		
 );
 
 #--	Inserts startup data into database
