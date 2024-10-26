@@ -24,7 +24,9 @@ namespace ClinicaSePrice.Classes
                             INNER JOIN Pacientes p ON tr.ID_Paciente = p.ID
                             INNER JOIN Medicos m ON tr.ID_Medico = m.ID
                             INNER JOIN Especialidades e ON m.ID_Especialidad = e.ID
-                             WHERE p.DNI = @dni";
+                             WHERE p.DNI = @dni
+                             AND tr.Acreditado = 0";
+                            
 
             try
             {
