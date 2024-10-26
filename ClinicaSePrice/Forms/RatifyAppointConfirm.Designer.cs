@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             lblRatifyAppoint = new Label();
-            radioButton1 = new RadioButton();
             rbRatifyAppoint = new Button();
+            groupBoxRatify = new GroupBox();
             SuspendLayout();
             // 
             // lblRatifyAppoint
@@ -43,18 +43,6 @@
             lblRatifyAppoint.TabIndex = 11;
             lblRatifyAppoint.Text = "Acreditar turno";
             // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Italic);
-            radioButton1.Location = new Point(307, 106);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(214, 24);
-            radioButton1.TabIndex = 19;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Especialidad: RX - Sección B2";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
             // rbRatifyAppoint
             // 
             rbRatifyAppoint.BackColor = Color.FromArgb(100, 181, 246);
@@ -65,6 +53,16 @@
             rbRatifyAppoint.TabIndex = 20;
             rbRatifyAppoint.Text = "ACEPTAR";
             rbRatifyAppoint.UseVisualStyleBackColor = false;
+            rbRatifyAppoint.Click += btnAppointRatify_Click;
+            // 
+            // groupBoxRatify
+            // 
+            groupBoxRatify.Location = new Point(153, 89);
+            groupBoxRatify.Name = "groupBoxRatify";
+            groupBoxRatify.Size = new Size(528, 133);
+            groupBoxRatify.TabIndex = 21;
+            groupBoxRatify.TabStop = false;
+            groupBoxRatify.Text = "Elija el turno a cancelar";
             // 
             // RatifyAppointConfirm
             // 
@@ -72,8 +70,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
             ClientSize = new Size(800, 344);
+            Controls.Add(groupBoxRatify);
             Controls.Add(rbRatifyAppoint);
-            Controls.Add(radioButton1);
             Controls.Add(lblRatifyAppoint);
             Name = "RatifyAppointConfirm";
             Text = "Form1";
@@ -84,7 +82,7 @@
         #endregion
 
         private Label lblRatifyAppoint;
-        private RadioButton radioButton1;
         private Button rbRatifyAppoint;
+        public GroupBox groupBoxRatify;
     }
 }

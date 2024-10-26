@@ -54,6 +54,7 @@
             btnSearchDniRatify.TabIndex = 19;
             btnSearchDniRatify.Text = "ACEPTAR";
             btnSearchDniRatify.UseVisualStyleBackColor = false;
+            btnSearchDniRatify.Click += btnSearchDniRatify_Click;
             // 
             // txtDniRatify
             // 
