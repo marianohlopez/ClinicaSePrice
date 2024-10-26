@@ -62,7 +62,9 @@ CREATE TABLE IF NOT EXISTS Turnos_Reservados (
   Hora_Turno TIME,
   ID_Paciente INT,
   FOREIGN KEY (ID_Medico) REFERENCES Medicos(ID),
-  FOREIGN KEY (ID_Paciente) REFERENCES Pacientes(ID)
+  FOREIGN KEY (ID_Paciente) REFERENCES Pacientes(ID),
+  Acreditado BOOLEAN	
+	
 );
 
 #--	Inserts startup data into database
