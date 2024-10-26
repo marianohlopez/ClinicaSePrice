@@ -12,36 +12,70 @@ namespace ClinicaSePrice.Classes
     internal class CancelAppointment
     {
     
-
-    // Registra el turno en la base de datos
-
-    public static void SelectAppointment(int idPaciente, int idMedico, DateTime selectedDate, string selectedSchedule)
-    {
-        MySqlConnection conn = Connection.GetInstance().CreateConnection();
-        string query = @"INSERT INTO Turnos_Reservados (ID_Medico, Fecha_Turno, Hora_Turno, ID_Paciente) 
-                     VALUES (@idMedico, @fechaTurno, @horaTurno, @idPaciente)";
-
-        try
+     // Obtiene los turnos de la DB
+        public static List<string> GetAppointments(string dni)
         {
-            conn.Open();
-            MySqlCommand command = new MySqlCommand(query, conn);
+            List<string> activeappointments = new List<string>();
 
-            command.Parameters.AddWithValue("@idMedico", idMedico);
-            command.Parameters.AddWithValue("@fechaTurno", selectedDate.ToString("yyyy-MM-dd"));
-            command.Parameters.AddWithValue("@horaTurno", TimeSpan.Parse(selectedSchedule.Split('-')[0])); // Extraer la hora de inicio del rango
-            command.Parameters.AddWithValue("@idPaciente", idPaciente);
+            MySqlConnection conn = Connection.GetInstance().CreateConnection();
 
-            command.ExecuteNonQuery();
+            string query = @"SELECT tr.ID, tr.Fecha_Turno, tr.Hora_Turno, m.Nombre, m.Apellido, e.Especialidad
+                            FROM Turnos_Reservados tr
+                            INNER JOIN Pacientes p ON tr.ID_Paciente = p.ID
+                            INNER JOIN Medicos m ON tr.ID_Medico = m.ID
+                            INNER JOIN Especialidades e ON m.ID_Especialidad = e.ID
+                             WHERE p.DNI = @dni";
+
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@dni", dni);
+                
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string activeappointment = $"{reader["ID"]} - {reader["Fecha_Turno"]} - {reader["Hora_Turno"]} HS - {reader["Nombre"]} {reader["Apellido"]} - {reader["Especialidad"]}";
+                    activeappointments.Add(activeappointment);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving schedules: {ex.Message}");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return activeappointments; 
         }
-        catch (Exception ex)
+
+        public void DeleteAppointments(int id)
         {
-            Debug.WriteLine($"Error al registrar el turno: {ex.Message}");
-            MessageBox.Show("Ocurrió un error al intentar registrar el turno. Inténtelo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MySqlConnection conn = Connection.GetInstance().CreateConnection();
+
+            string query = @"DELETE FROM turnos_reservados
+                            WHERE id = @id;";
+
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+
+                MySqlDataReader reader = command.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving schedules: {ex.Message}");
+            }
+            finally
+            {
+                conn.Close();
+            }
+                        
         }
-        finally
-        {
-            conn.Close();
-        }
+
     }
-}
 }

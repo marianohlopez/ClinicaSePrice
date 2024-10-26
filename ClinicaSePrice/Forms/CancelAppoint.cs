@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,19 +36,50 @@ namespace ClinicaSePrice.Forms
             }
             else
             {
-
+                CancelAppointment cancelAppointment = new CancelAppointment();
                 CancelAppointConfirm cancelAppointConfirm = new CancelAppointConfirm(dni);                
                 cancelAppointConfirm.Show();
-                // Registrar turno
-                // MakeAppointment.RegisterAppointment(patient.Id, newDoctor.Id, selectedDate, selectedSchedule);
+                List<string> resultados = CancelAppointment.GetAppointments(dni);
 
-                //MessageBox.Show($"Turno registrado para el paciente: {patient.Name} {patient.LastName}", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (resultados.Count == 0)
+                {
+                    MessageBox.Show("El paciente no tiene citas programadas.", "Sin citas encontradas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                // Crea los Radio Buttons y los inserta en el Groupbox
+                int radioButtonY = 20; // Offset dentro del Groupbox
+                for (int i = 0; i < resultados.Count; i++)
+                {
+                    RadioButton radioButton = new RadioButton();
+                    radioButton.AutoSize = false; // Desactiva tamaño automatico
+                    radioButton.Width = 450;    //Tamaño personalizado para texto largo
+                    
+                    //Usa el ID del String y se lo asigna como Tag al RB
+                    string[] appointID = resultados[i].Split('-'); 
+                    string idString = appointID[0].Trim();
+                    int.TryParse(idString, out int id);
+                    radioButton.Tag = id;
+                    
+                    radioButton.Text = resultados[i]; // Agrega el resultado especifico de la lista
+                    radioButton.Location = new Point(10, radioButtonY); // Posicion del RB
+                    cancelAppointConfirm.groupBoxCancel.Controls.Add(radioButton);
+                    radioButtonY += 20; // Espaciado entre RB
+                    
+                }
+                //Selecciona automaticamente el primer RB de la lista
+                cancelAppointConfirm.groupBoxCancel.Controls[0].Select();
+                                
+                cancelAppointConfirm.Show();
+                cancelAppointConfirm.TopMost = true;
+                this.Close();
 
-                //this.Close();
             }
+            
         }
-    }
 
-    
-}   
+        }
+   
+
+}
+ 
 

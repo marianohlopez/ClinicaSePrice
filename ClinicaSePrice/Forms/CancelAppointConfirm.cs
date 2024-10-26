@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicaSePrice.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,34 @@ namespace ClinicaSePrice.Forms
             this.dni = dni;
         }
 
-       
+        private void btnAppointCancel_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in groupBoxCancel.Controls)
+            {
+                if (control is RadioButton radioButton && radioButton.Checked)
+                {
+                    int ID = (int)radioButton.Tag;
+
+                    // Mostrar un mensaje de confirmación
+                    if (MessageBox.Show("¿Estás seguro de que deseas cancelar este turno?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CancelAppointment cancelAppointment = new CancelAppointment();
+                        cancelAppointment.DeleteAppointments(ID);
+                        // Actualizar la interfaz gráfica, por ejemplo, eliminar el RadioButton
+                        groupBoxCancel.Controls.Remove(radioButton);
+                        MessageBox.Show($"El turno ha sido cancelado exitosamente", "Cancelacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
+                    break;
+                    
+                }
+            }
+            
+
+            this.Close();
+        }
     }
-}
+        
+    }
+

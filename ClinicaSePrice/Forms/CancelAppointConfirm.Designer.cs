@@ -30,7 +30,7 @@
         {
             lblCancelAppoint = new Label();
             btnCancelAppoint = new Button();
-            rbCancelAppoint = new RadioButton();
+            groupBoxCancel = new GroupBox();
             SuspendLayout();
             // 
             // lblCancelAppoint
@@ -53,18 +53,16 @@
             btnCancelAppoint.TabIndex = 17;
             btnCancelAppoint.Text = "ACEPTAR";
             btnCancelAppoint.UseVisualStyleBackColor = false;
+            btnCancelAppoint.Click += btnAppointCancel_Click;
             // 
-            // rbCancelAppoint
+            // groupBoxCancel
             // 
-            rbCancelAppoint.AutoSize = true;
-            rbCancelAppoint.Font = new Font("Segoe UI", 11.25F, FontStyle.Italic);
-            rbCancelAppoint.Location = new Point(307, 106);
-            rbCancelAppoint.Name = "rbCancelAppoint";
-            rbCancelAppoint.Size = new Size(214, 24);
-            rbCancelAppoint.TabIndex = 18;
-            rbCancelAppoint.TabStop = true;
-            rbCancelAppoint.Text = "Especialidad: RX - Sección B2";
-            rbCancelAppoint.UseVisualStyleBackColor = true;
+            groupBoxCancel.Location = new Point(153, 89);
+            groupBoxCancel.Name = "groupBoxCancel";
+            groupBoxCancel.Size = new Size(528, 133);
+            groupBoxCancel.TabIndex = 18;
+            groupBoxCancel.TabStop = false;
+            groupBoxCancel.Text = "Elija el turno a cancelar";
             // 
             // CancelAppointConfirm
             // 
@@ -72,7 +70,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
             ClientSize = new Size(800, 344);
-            Controls.Add(rbCancelAppoint);
+            Controls.Add(groupBoxCancel);
             Controls.Add(btnCancelAppoint);
             Controls.Add(lblCancelAppoint);
             Name = "CancelAppointConfirm";
@@ -85,6 +83,7 @@
 
         private Label lblCancelAppoint;
         private Button btnCancelAppoint;
-        private RadioButton rbCancelAppoint;
+        public GroupBox groupBoxCancel;
     }
+    
 }
