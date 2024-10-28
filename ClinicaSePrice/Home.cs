@@ -29,5 +29,17 @@ namespace ClinicaSePrice
         {
             Application.Exit();
         }
+
+        private void btnRegStudy_Click(object sender, EventArgs e)
+        {
+            RegisterStudy registerStudy = new RegisterStudy();
+            registerStudy.ShowDialog();
+        }
+
+        private void btnDelivStudy_Click(object sender, EventArgs e)
+        {
+            DeliverStudy deliverStudy = new DeliverStudy();
+            deliverStudy.ShowDialog();
+        }
     }
 }

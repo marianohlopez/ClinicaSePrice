@@ -31,7 +31,7 @@
             label1 = new Label();
             labelIDPatient = new Label();
             txtDni = new TextBox();
-            btnSearchDni_Click = new Button();
+            btnValidateDni = new Button();
             SuspendLayout();
             // 
             // label1
@@ -53,7 +53,6 @@
             labelIDPatient.Size = new Size(180, 20);
             labelIDPatient.TabIndex = 1;
             labelIDPatient.Text = "Ingrese el DNI del paciente";
-            //labelIDPatient.Click += label2_Click;
             // 
             // txtDni
             // 
@@ -61,19 +60,18 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(400, 23);
             txtDni.TabIndex = 2;
-            //txtDni.TextChanged += txtDni_TextChanged;
             // 
-            // btnSearchDni_Click
+            // btnValidateDni
             // 
-            btnSearchDni_Click.BackColor = Color.FromArgb(100, 181, 246);
-            btnSearchDni_Click.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnSearchDni_Click.Location = new Point(338, 271);
-            btnSearchDni_Click.Name = "btnSearchDni_Click";
-            btnSearchDni_Click.Size = new Size(130, 36);
-            btnSearchDni_Click.TabIndex = 3;
-            btnSearchDni_Click.Text = "ACEPTAR";
-            btnSearchDni_Click.UseVisualStyleBackColor = false;
-            btnSearchDni_Click.Click += button1_Click;
+            btnValidateDni.BackColor = Color.FromArgb(100, 181, 246);
+            btnValidateDni.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnValidateDni.Location = new Point(335, 291);
+            btnValidateDni.Name = "btnValidateDni";
+            btnValidateDni.Size = new Size(130, 36);
+            btnValidateDni.TabIndex = 3;
+            btnValidateDni.Text = "ACEPTAR";
+            btnValidateDni.UseVisualStyleBackColor = false;
+            btnValidateDni.Click += btnValidateDni_Click;
             // 
             // StudyConfirm
             // 
@@ -81,7 +79,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnSearchDni_Click);
+            Controls.Add(btnValidateDni);
             Controls.Add(txtDni);
             Controls.Add(labelIDPatient);
             Controls.Add(label1);
@@ -96,6 +94,6 @@
         private Label label1;
         private Label labelIDPatient;
         private TextBox txtDni;
-        private Button btnSearchDni_Click;
+        private Button btnValidateDni;
     }
 }

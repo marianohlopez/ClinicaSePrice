@@ -66,12 +66,13 @@
             btnRegisterStudy.TabIndex = 2;
             btnRegisterStudy.Text = "ACEPTAR";
             btnRegisterStudy.UseVisualStyleBackColor = false;
+            btnRegisterStudy.Click += btnRegisterStudy_Click;
             // 
             // labelTitleForm
             // 
             labelTitleForm.AutoSize = true;
             labelTitleForm.Font = new Font("Segoe UI", 14.25F);
-            labelTitleForm.Location = new Point(333, 26);
+            labelTitleForm.Location = new Point(335, 23);
             labelTitleForm.Name = "labelTitleForm";
             labelTitleForm.Size = new Size(153, 25);
             labelTitleForm.TabIndex = 3;

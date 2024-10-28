@@ -31,7 +31,7 @@
             labelTitleDeliverForm = new Label();
             labelIDPatient = new Label();
             textBox1 = new TextBox();
-            btnDeliver = new Button();
+            btnDelivStudy = new Button();
             SuspendLayout();
             // 
             // labelTitleDeliverForm
@@ -61,16 +61,17 @@
             textBox1.Size = new Size(400, 23);
             textBox1.TabIndex = 2;
             // 
-            // btnDeliver
+            // btnDelivStudy
             // 
-            btnDeliver.BackColor = Color.FromArgb(100, 181, 246);
-            btnDeliver.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnDeliver.Location = new Point(338, 271);
-            btnDeliver.Name = "btnDeliver";
-            btnDeliver.Size = new Size(130, 36);
-            btnDeliver.TabIndex = 3;
-            btnDeliver.Text = "ACEPTAR";
-            btnDeliver.UseVisualStyleBackColor = false;
+            btnDelivStudy.BackColor = Color.FromArgb(100, 181, 246);
+            btnDelivStudy.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnDelivStudy.Location = new Point(338, 271);
+            btnDelivStudy.Name = "btnDelivStudy";
+            btnDelivStudy.Size = new Size(130, 36);
+            btnDelivStudy.TabIndex = 3;
+            btnDelivStudy.Text = "ACEPTAR";
+            btnDelivStudy.UseVisualStyleBackColor = false;
+            btnDelivStudy.Click += btnDelivStudy_Click;
             // 
             // DeliverStudy
             // 
@@ -78,7 +79,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnDeliver);
+            Controls.Add(btnDelivStudy);
             Controls.Add(textBox1);
             Controls.Add(labelIDPatient);
             Controls.Add(labelTitleDeliverForm);
@@ -94,6 +95,6 @@
         private Label labelTitleDeliverForm;
         private Label labelIDPatient;
         private TextBox textBox1;
-        private Button btnDeliver;
+        private Button btnDelivStudy;
     }
 }

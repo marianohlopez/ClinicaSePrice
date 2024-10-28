@@ -21,5 +21,11 @@ namespace ClinicaSePrice.Forms
         {
 
         }
+
+        private void btnDelivStudy_Click(object sender, EventArgs e)
+        {
+            DeliverConfirm deliverConfirm = new DeliverConfirm();
+            deliverConfirm.Show();
+        }
     }
 }

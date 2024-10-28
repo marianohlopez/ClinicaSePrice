@@ -32,8 +32,8 @@
             lblUserName = new Label();
             btnMkAppoint = new Button();
             btnClAppoint = new Button();
-            btnRegAppoint = new Button();
-            btnDelivAppoint = new Button();
+            btnRegStudy = new Button();
+            btnDelivStudy = new Button();
             lblWelcome = new Label();
             btnAcrAppoint = new Button();
             btnMngSuppl = new Button();
@@ -83,27 +83,29 @@
             btnClAppoint.Text = "Cancelar turno";
             btnClAppoint.UseVisualStyleBackColor = false;
             // 
-            // btnRegAppoint
+            // btnRegStudy
             // 
-            btnRegAppoint.BackColor = Color.FromArgb(100, 181, 246);
-            btnRegAppoint.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
-            btnRegAppoint.Location = new Point(32, 230);
-            btnRegAppoint.Name = "btnRegAppoint";
-            btnRegAppoint.Size = new Size(230, 69);
-            btnRegAppoint.TabIndex = 4;
-            btnRegAppoint.Text = "Registrar estudio";
-            btnRegAppoint.UseVisualStyleBackColor = false;
+            btnRegStudy.BackColor = Color.FromArgb(100, 181, 246);
+            btnRegStudy.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
+            btnRegStudy.Location = new Point(32, 230);
+            btnRegStudy.Name = "btnRegStudy";
+            btnRegStudy.Size = new Size(230, 69);
+            btnRegStudy.TabIndex = 4;
+            btnRegStudy.Text = "Registrar estudio";
+            btnRegStudy.UseVisualStyleBackColor = false;
+            btnRegStudy.Click += btnRegStudy_Click;
             // 
-            // btnDelivAppoint
+            // btnDelivStudy
             // 
-            btnDelivAppoint.BackColor = Color.FromArgb(100, 181, 246);
-            btnDelivAppoint.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
-            btnDelivAppoint.Location = new Point(289, 230);
-            btnDelivAppoint.Name = "btnDelivAppoint";
-            btnDelivAppoint.Size = new Size(230, 69);
-            btnDelivAppoint.TabIndex = 5;
-            btnDelivAppoint.Text = "Entregar estudio";
-            btnDelivAppoint.UseVisualStyleBackColor = false;
+            btnDelivStudy.BackColor = Color.FromArgb(100, 181, 246);
+            btnDelivStudy.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic);
+            btnDelivStudy.Location = new Point(289, 230);
+            btnDelivStudy.Name = "btnDelivStudy";
+            btnDelivStudy.Size = new Size(230, 69);
+            btnDelivStudy.TabIndex = 5;
+            btnDelivStudy.Text = "Entregar estudio";
+            btnDelivStudy.UseVisualStyleBackColor = false;
+            btnDelivStudy.Click += btnDelivStudy_Click;
             // 
             // lblWelcome
             // 
@@ -159,8 +161,8 @@
             Controls.Add(btnMngSuppl);
             Controls.Add(btnAcrAppoint);
             Controls.Add(lblWelcome);
-            Controls.Add(btnDelivAppoint);
-            Controls.Add(btnRegAppoint);
+            Controls.Add(btnDelivStudy);
+            Controls.Add(btnRegStudy);
             Controls.Add(btnClAppoint);
             Controls.Add(btnMkAppoint);
             Controls.Add(lblUserName);
@@ -178,8 +180,8 @@
         private Label lblUserName;
         private Button btnMkAppoint;
         private Button btnClAppoint;
-        private Button btnRegAppoint;
-        private Button btnDelivAppoint;
+        private Button btnRegStudy;
+        private Button btnDelivStudy;
         private Label lblWelcome;
         private Button btnAcrAppoint;
         private Button btnMngSuppl;

@@ -1,4 +1,5 @@
 ﻿using ClinicaSePrice.Classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace ClinicaSePrice.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnValidateDni_Click(object sender, EventArgs e)
         {
             string dni = txtDni.Text.Trim();
 
@@ -36,7 +37,7 @@ namespace ClinicaSePrice.Forms
             else
             {
                 // Registrar estudio
-                // MakeAppointment.RegisterAppointment(patient.Id, newDoctor.Id, selectedDate, selectedSchedule);
+                //MakeAppointment.RegisterAppointment
 
                 // MessageBox.Show($"Turno registrado para el paciente: {patient.Name} {patient.LastName}", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

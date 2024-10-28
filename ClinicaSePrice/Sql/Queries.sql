@@ -6,6 +6,12 @@ USE CLinicaSePrice;
 
 #--	Executes drop sentences
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS Especialidades;
+DROP TABLE IF EXISTS Medicos;
+DROP TABLE IF EXISTS Pacientes;
+DROP TABLE IF EXISTS Estudios;
+DROP TABLE IF EXISTS Horarios_Turnos;
+DROP TABLE IF EXISTS Turnos_Reservados;
 DROP PROCEDURE IF EXISTS Login;
 #-------------------------------------------------
 
@@ -44,6 +50,16 @@ CREATE TABLE IF NOT EXISTS Pacientes (
   Apellido VARCHAR(100),
   DNI VARCHAR(10),
   Telefono VARCHAR(15)
+);
+
+CREATE TABLE IF NOT EXISTS Estudios (
+ID INT AUTO_INCREMENT PRIMARY KEY,
+PacienteID INT NOT NULL,
+EspecialidadID INT NULL,
+FechaEstudio DATE DEFAULT current_timestamp,
+Seccion VARCHAR(5),
+FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID),
+FOREIGN KEY (EspecialidadID) REFERENCES Especialidades(ID)
 );
 
 CREATE TABLE IF NOT EXISTS Horarios_Turnos (
