@@ -25,6 +25,13 @@ CREATE TABLE IF NOT EXISTS users(
 	CONSTRAINT userPK PRIMARY KEY (ID)
 );
 
+CREATE TABLE IF NOT EXISTS insumos(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Name varchar (20) UNIQUE KEY NOT NULL,
+	Amount INT DEFAULT 0,
+	ReStock boolean DEFAULT TRUE
+);
+
 CREATE TABLE IF NOT EXISTS Especialidades (
   ID INT AUTO_INCREMENT PRIMARY KEY,
   Especialidad VARCHAR(100)
@@ -106,4 +113,15 @@ VALUES
   (2, 'Jueves', '09:00', '13:00'),
   (3, 'Lunes', '10:00', '15:00'),
   (3, 'Viernes', '10:00', '15:00');
+
+INSERT INTO insumos (Name)
+VALUES 
+  ('Algodon'),
+  ('Gasas'),
+  ('Alcohol'),
+  ('Mascarillas'),
+  ('Guantes'),
+  ('Jeringas'),
+  ('Agujas'),
+  ('Apositos');
 
