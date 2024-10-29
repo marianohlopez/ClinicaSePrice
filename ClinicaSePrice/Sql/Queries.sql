@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS Estudios (
 ID INT AUTO_INCREMENT PRIMARY KEY,
 PacienteID INT NOT NULL,
 EspecialidadID INT NULL,
-FechaEstudio DATE DEFAULT current_timestamp,
-Seccion VARCHAR(5),
+FechaEstudio DATE,
+SeccionID VARCHAR(5),
 FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID),
 FOREIGN KEY (EspecialidadID) REFERENCES Especialidades(ID)
 );
@@ -113,6 +113,13 @@ INSERT INTO Pacientes (Nombre, Apellido, DNI, Telefono)
 VALUES 
   ('Ana', 'Martínez', '12345678', '555-1234'),
   ('Luis', 'García', '87654321', '555-5678');
+
+INSERT INTO Estudios (PacienteID, EspecialidadID, FechaEstudio, SeccionID)
+VALUES 
+    (1, 1, CURDATE(), 'A1'), 
+    (2, 2, CURDATE(), 'B2'), 
+    (1, 2, CURDATE(), 'A3'), 
+    (2, 1, CURDATE(), 'B1');
   
 INSERT INTO Horarios_Turnos (ID_Medico, Dia_Semana, Hora_Inicio, Hora_Fin)
 VALUES 

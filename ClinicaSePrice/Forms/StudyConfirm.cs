@@ -1,4 +1,5 @@
 ﻿using ClinicaSePrice.Classes;
+using ClinicaSePrice.Data;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,18 @@ namespace ClinicaSePrice.Forms
 {
     public partial class StudyConfirm : Form
     {
-        public StudyConfirm()
+        private int specialtyId;
+        private int sectionId;
+        private DateTime studyDate;
+        public StudyConfirm(int specialtyId, int sectionId, DateTime studyDate)
         {
             InitializeComponent();
+
+            this.specialtyId = specialtyId;
+            this.sectionId = sectionId;
+            this.studyDate = studyDate;
+
+            this.AcceptButton = btnValidateDni;
         }
 
         private void btnValidateDni_Click(object sender, EventArgs e)
@@ -37,11 +47,41 @@ namespace ClinicaSePrice.Forms
             else
             {
                 // Registrar estudio
-                //MakeAppointment.RegisterAppointment
+                RegisterStudy(patient.Id, specialtyId, sectionId, studyDate);
 
-                // MessageBox.Show($"Turno registrado para el paciente: {patient.Name} {patient.LastName}", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Estudio registrado para el paciente: {patient.Name} {patient.LastName}", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+        }
 
-                // this.Close();
+        private void RegisterStudy(int patientId, int specialtyId, int sectionId, DateTime date)
+        {
+            try
+            {
+                using (var connection = Connection.GetInstance().CreateConnection())
+                {
+                    connection.Open();
+
+                    // Sentencia SQL para registrar el estudio
+                    string query = "INSERT INTO Estudios (PacienteID, EspecialidadID, SeccionID, FechaEstudio) " +
+                                   "VALUES (@PacienteID, @EspecialidadID, @SeccionID, @FechaEstudio)";
+
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        //Asignacion de valores
+                        command.Parameters.AddWithValue("@PacienteID", patientId);
+                        command.Parameters.AddWithValue("@EspecialidadID", specialtyId);
+                        command.Parameters.AddWithValue("@SeccionID", sectionId);
+                        command.Parameters.AddWithValue("@FechaEstudio", date);
+
+                        // Ejecucion de consulta
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al registrar el estudio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
