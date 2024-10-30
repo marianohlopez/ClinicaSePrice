@@ -6,6 +6,13 @@ USE CLinicaSePrice;
 
 #--	Executes drop sentences
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS Especialidades;
+DROP TABLE IF EXISTS Medicos;
+DROP TABLE IF EXISTS Pacientes;
+DROP TABLE IF EXISTS Estudios;
+DROP TABLE IF EXISTS Horarios_Turnos;
+DROP TABLE IF EXISTS Turnos_Reservados;
+DROP TABLE IF EXISTS insumos;
 DROP PROCEDURE IF EXISTS Login;
 #-------------------------------------------------
 
