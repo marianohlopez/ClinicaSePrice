@@ -1,3 +1,4 @@
+using ClinicaSePrice.Classes;
 using ClinicaSePrice.Forms;
 
 namespace ClinicaSePrice
@@ -30,6 +31,12 @@ namespace ClinicaSePrice
         {
             RatifyAppoint ratifyAppoint = new RatifyAppoint();
             ratifyAppoint.ShowDialog();
+        }
+
+        private void btnMngSuppl_Click(object sender, EventArgs e)
+        {
+            ManageSupplies manageSupplies = new ManageSupplies();
+            manageSupplies.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

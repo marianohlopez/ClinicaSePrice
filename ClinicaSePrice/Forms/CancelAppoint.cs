@@ -17,6 +17,8 @@ namespace ClinicaSePrice.Forms
         public CancelAppoint()
         {
             InitializeComponent();
+            this.AcceptButton = btnSearchDniCancel;
+
         }
 
         private void btnSearchDniCancel_Click(object sender, EventArgs e)

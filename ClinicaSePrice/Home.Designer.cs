@@ -138,6 +138,7 @@
             btnMngSuppl.TabIndex = 8;
             btnMngSuppl.Text = "Gestionar insumos";
             btnMngSuppl.UseVisualStyleBackColor = false;
+            btnMngSuppl.Click += btnMngSuppl_Click;
             // 
             // btnClose
             // 
