@@ -18,6 +18,8 @@ namespace ClinicaSePrice.Forms
         public RatifyAppointConfirm(string dni)
         {
             InitializeComponent();
+            this.AcceptButton = rbRatifyAppoint;
+
             this.dni = dni;
         }
 

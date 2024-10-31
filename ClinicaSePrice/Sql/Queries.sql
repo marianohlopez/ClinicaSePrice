@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS Pacientes;
 DROP TABLE IF EXISTS Estudios;
 DROP TABLE IF EXISTS Horarios_Turnos;
 DROP TABLE IF EXISTS Turnos_Reservados;
+DROP TABLE IF EXISTS insumos;
 DROP PROCEDURE IF EXISTS Login;
 #-------------------------------------------------
 
@@ -30,6 +31,13 @@ CREATE TABLE IF NOT EXISTS users(
 	UserRole varchar(20) DEFAULT 'Admin',
 	ActiveUser boolean DEFAULT TRUE,
 	CONSTRAINT userPK PRIMARY KEY (ID)
+);
+
+CREATE TABLE IF NOT EXISTS insumos(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Name varchar (20) UNIQUE KEY NOT NULL,
+	Amount INT DEFAULT 0,
+	ReStock boolean DEFAULT TRUE
 );
 
 CREATE TABLE IF NOT EXISTS Especialidades (
@@ -130,4 +138,15 @@ VALUES
   (2, 'Jueves', '09:00', '13:00'),
   (3, 'Lunes', '10:00', '15:00'),
   (3, 'Viernes', '10:00', '15:00');
+
+INSERT INTO insumos (Name)
+VALUES 
+  ('Algodon'),
+  ('Gasas'),
+  ('Alcohol'),
+  ('Mascarillas'),
+  ('Guantes'),
+  ('Jeringas'),
+  ('Agujas'),
+  ('Apositos');
 

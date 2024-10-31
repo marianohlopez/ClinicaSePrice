@@ -16,6 +16,8 @@ namespace ClinicaSePrice.Forms
         public RatifyAppoint()
         {
             InitializeComponent();
+            this.AcceptButton = btnSearchDniRatify;
+
         }
 
         private void btnSearchDniRatify_Click(object sender, EventArgs e)

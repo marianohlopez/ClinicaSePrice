@@ -18,6 +18,8 @@ namespace ClinicaSePrice.Forms
         public CancelAppointConfirm(string dni)
         {
             InitializeComponent();
+            this.AcceptButton = btnCancelAppoint;
+
             this.dni = dni;
         }
 
