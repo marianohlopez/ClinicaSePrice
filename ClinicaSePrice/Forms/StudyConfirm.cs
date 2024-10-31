@@ -16,9 +16,9 @@ namespace ClinicaSePrice.Forms
     public partial class StudyConfirm : Form
     {
         private int specialtyId;
-        private int sectionId;
+        private string sectionId;
         private DateTime studyDate;
-        public StudyConfirm(int specialtyId, int sectionId, DateTime studyDate)
+        public StudyConfirm(int specialtyId, string sectionId, DateTime studyDate)
         {
             InitializeComponent();
 
@@ -54,7 +54,7 @@ namespace ClinicaSePrice.Forms
             }
         }
 
-        private void RegisterStudy(int patientId, int specialtyId, int sectionId, DateTime date)
+        private void RegisterStudy(int patientId, int specialtyId, string sectionId, DateTime date)
         {
             try
             {

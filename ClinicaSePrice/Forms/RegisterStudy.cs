@@ -37,13 +37,13 @@ namespace ClinicaSePrice.Forms
 
             // Guardar specialtyId y sectionId seleccionados
             int specialtyId = comboSpecialty.SelectedIndex;
-            int sectionId = comboSection.SelectedIndex;
+            string sectionId = comboSection.SelectedItem as string ?? string.Empty;
 
             // Se usa fecha actual para el registro
             DateTime studyDate = DateTime.Now;
 
             // Si ambas opciones estan seleccionadas, abrir StudyConfirm.cs
-            StudyConfirm studyConfirm = new StudyConfirm(sectionId, specialtyId, studyDate);
+            StudyConfirm studyConfirm = new StudyConfirm(specialtyId, sectionId, studyDate);
             studyConfirm.Show();
         }
     }

@@ -28,35 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
             label1 = new Label();
-            button1 = new Button();
+            btnDelivConfirm = new Button();
+            groupBoxStudy = new GroupBox();
             SuspendLayout();
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI", 11.25F, FontStyle.Italic);
-            radioButton1.Location = new Point(293, 141);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(214, 24);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Especialidad: RX - Sección B2";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI", 11.25F, FontStyle.Italic);
-            radioButton2.Location = new Point(292, 183);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(217, 24);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Especialidad: RM - Sección A1";
-            radioButton2.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -68,16 +43,26 @@
             label1.TabIndex = 2;
             label1.Text = "Retirar Estudio";
             // 
-            // button1
+            // btnDelivConfirm
             // 
-            button1.BackColor = Color.FromArgb(100, 181, 246);
-            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            button1.Location = new Point(338, 271);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 36);
-            button1.TabIndex = 3;
-            button1.Text = "ACEPTAR";
-            button1.UseVisualStyleBackColor = false;
+            btnDelivConfirm.BackColor = Color.FromArgb(100, 181, 246);
+            btnDelivConfirm.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnDelivConfirm.Location = new Point(338, 271);
+            btnDelivConfirm.Name = "btnDelivConfirm";
+            btnDelivConfirm.Size = new Size(130, 36);
+            btnDelivConfirm.TabIndex = 3;
+            btnDelivConfirm.Text = "ACEPTAR";
+            btnDelivConfirm.UseVisualStyleBackColor = false;
+            btnDelivConfirm.Click += btnDelivConfirm_Click;
+            // 
+            // groupBoxStudy
+            // 
+            groupBoxStudy.Location = new Point(230, 50);
+            groupBoxStudy.Name = "groupBoxStudy";
+            groupBoxStudy.Size = new Size(323, 215);
+            groupBoxStudy.TabIndex = 4;
+            groupBoxStudy.TabStop = false;
+            groupBoxStudy.Text = "Estudios del paciente:";
             // 
             // DeliverConfirm
             // 
@@ -85,10 +70,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(groupBoxStudy);
+            Controls.Add(btnDelivConfirm);
             Controls.Add(label1);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
             Name = "DeliverConfirm";
             Text = "DeliverConfirm";
             ResumeLayout(false);
@@ -96,10 +80,8 @@
         }
 
         #endregion
-
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
         private Label label1;
-        private Button button1;
+        private Button btnDelivConfirm;
+        private GroupBox groupBoxStudy;
     }
 }

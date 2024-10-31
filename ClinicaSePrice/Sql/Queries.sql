@@ -59,6 +59,7 @@ PacienteID INT NOT NULL,
 EspecialidadID INT NULL,
 FechaEstudio DATE,
 SeccionID VARCHAR(5),
+EstadoEstudio BOOLEAN DEFAULT 1, -- 1: Disponible, 0: Retirado
 FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID),
 FOREIGN KEY (EspecialidadID) REFERENCES Especialidades(ID)
 );
@@ -116,10 +117,10 @@ VALUES
 
 INSERT INTO Estudios (PacienteID, EspecialidadID, FechaEstudio, SeccionID)
 VALUES 
-    (1, 1, CURDATE(), 'A1'), 
-    (2, 2, CURDATE(), 'B2'), 
-    (1, 2, CURDATE(), 'A3'), 
-    (2, 1, CURDATE(), 'B1');
+    (1, 1, CURDATE(), 'A1', 1), 
+    (2, 2, CURDATE(), 'B2', 1), 
+    (1, 2, CURDATE(), 'A3', 1), 
+    (2, 1, CURDATE(), 'B1', 1);
   
 INSERT INTO Horarios_Turnos (ID_Medico, Dia_Semana, Hora_Inicio, Hora_Fin)
 VALUES 
