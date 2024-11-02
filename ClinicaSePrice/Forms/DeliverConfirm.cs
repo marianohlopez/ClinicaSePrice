@@ -86,6 +86,13 @@ namespace ClinicaSePrice.Forms
                 .OfType<System.Windows.Forms.RadioButton>()
                 .FirstOrDefault(r => r.Checked);
 
+            if (selectedRadioButton == null)
+            {
+                // Mostrar advertencia si no hay un radioButton seleccionado
+                MessageBox.Show("Por favor, selecciona un estudio para confirmar la entrega.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Salir del método si no hay selección
+            }
+
             if (selectedRadioButton != null)
             {
                 // Se obtiene ID del estudio del Tag del radioButton seleccionado

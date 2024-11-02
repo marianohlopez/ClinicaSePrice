@@ -57,7 +57,6 @@ namespace ClinicaSePrice.Forms
             MySqlConnection connection = ClinicaSePrice.Data.Connection.GetInstance().CreateConnection();
 
             // Consulta SQL para verificar la existencia
-            //string query = "SELECT COUNT(*) FROM Estudios WHERE PacienteID = @PacienteID AND EstadoEstudio = 1";
             string queryGetPatientId = "SELECT ID FROM Pacientes WHERE DNI = @DNI";
 
             try

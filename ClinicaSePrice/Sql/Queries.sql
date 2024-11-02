@@ -64,12 +64,11 @@ CREATE TABLE IF NOT EXISTS Pacientes (
 CREATE TABLE IF NOT EXISTS Estudios (
 ID INT AUTO_INCREMENT PRIMARY KEY,
 PacienteID INT NOT NULL,
-EspecialidadID INT NULL,
+EspecialidadID VARCHAR(100),
 FechaEstudio DATE,
 SeccionID VARCHAR(5),
 EstadoEstudio BOOLEAN DEFAULT 1, -- 1: Disponible, 0: Retirado
 FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID),
-FOREIGN KEY (EspecialidadID) REFERENCES Especialidades(ID)
 );
 
 CREATE TABLE IF NOT EXISTS Horarios_Turnos (
@@ -125,10 +124,10 @@ VALUES
 
 INSERT INTO Estudios (PacienteID, EspecialidadID, FechaEstudio, SeccionID, EstadoEstudio)
 VALUES 
-    (1, 1, CURDATE(), 'A1', 1), 
-    (2, 2, CURDATE(), 'B2', 1), 
-    (1, 2, CURDATE(), 'A3', 1), 
-    (2, 1, CURDATE(), 'B1', 1);
+    (1, 'Radiografía(RX)', CURDATE(), 'A1', 1), 
+    (2, 'Tomografía(TC)', CURDATE(), 'B2', 1), 
+    (1, 'Tomografía(TC)', CURDATE(), 'A3', 1), 
+    (2, 'Radiografía(RX)', CURDATE(), 'B1', 1);
   
 INSERT INTO Horarios_Turnos (ID_Medico, Dia_Semana, Hora_Inicio, Hora_Fin)
 VALUES 

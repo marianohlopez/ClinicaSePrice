@@ -36,7 +36,7 @@ namespace ClinicaSePrice.Forms
             }
 
             // Guardar specialtyId y sectionId seleccionados
-            int specialtyId = comboSpecialty.SelectedIndex;
+            string specialtyId = comboSpecialty.SelectedItem as string ?? string.Empty;
             string sectionId = comboSection.SelectedItem as string ?? string.Empty;
 
             // Se usa fecha actual para el registro
