@@ -123,7 +123,7 @@ VALUES
   ('Ana', 'Martínez', '12345678', '555-1234'),
   ('Luis', 'García', '87654321', '555-5678');
 
-INSERT INTO Estudios (PacienteID, EspecialidadID, FechaEstudio, SeccionID)
+INSERT INTO Estudios (PacienteID, EspecialidadID, FechaEstudio, SeccionID, EstadoEstudio)
 VALUES 
     (1, 1, CURDATE(), 'A1', 1), 
     (2, 2, CURDATE(), 'B2', 1), 
