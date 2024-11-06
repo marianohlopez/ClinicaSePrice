@@ -67,8 +67,8 @@ PacienteID INT NOT NULL,
 EspecialidadID VARCHAR(100),
 FechaEstudio DATE,
 SeccionID VARCHAR(5),
-EstadoEstudio BOOLEAN DEFAULT 1, -- 1: Disponible, 0: Retirado
-FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID),
+EstadoEstudio BOOLEAN DEFAULT 1,
+FOREIGN KEY (PacienteID) REFERENCES Pacientes(ID)
 );
 
 CREATE TABLE IF NOT EXISTS Horarios_Turnos (

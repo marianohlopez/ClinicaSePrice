@@ -62,7 +62,7 @@ namespace ClinicaSePrice.Forms
                     dtgvManageSupplies.Rows[row].Cells[0].Value = supply.ID;
                     dtgvManageSupplies.Rows[row].Cells[1].Value = supply.Name;
                     dtgvManageSupplies.Rows[row].Cells[2].Value = supply.Amount;
-                    dtgvManageSupplies.Rows[row].Cells[3].Value = supply.ReStock;
+                    dtgvManageSupplies.Rows[row].Cells[3].Value = supply.ReStock ? "Sí" : "No";
 
                     // Cambiar el color de fondo si ReStock es true
                     if (supply.ReStock)
